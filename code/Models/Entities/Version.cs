@@ -8,6 +8,8 @@
 
         // FK vers Product
         public int ProductId { get; set; }
+
+        // Navigation vers Product (1,1)
         public required Product Product { get; set; }
 
         // Relation 1,n avec VersionOS

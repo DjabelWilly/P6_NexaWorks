@@ -11,6 +11,8 @@
 
         // FK vers VersionOS
         public int VersionOSId { get; set; }
+
+        // chaque Issue pointe vers 1 seul VersionOS
         public required VersionOS VersionOS { get; set; }
     }
 }
