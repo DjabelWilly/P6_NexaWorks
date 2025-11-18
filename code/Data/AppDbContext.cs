@@ -1,5 +1,4 @@
-﻿using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using P6_NexaWorks.Models.Entities;
 using Version = P6_NexaWorks.Models.Entities.Version;
 

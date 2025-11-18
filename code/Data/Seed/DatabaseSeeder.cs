@@ -25,7 +25,7 @@ namespace P6_NexaWorks.Data.Seed
             await db.SaveChangesAsync();
 
             // -----------------------------
-            // OS (normalisés)
+            // OS
             // -----------------------------
             var osAndroid = new OS { Name = "Android" };
             var osWindows = new OS { Name = "Windows" };
@@ -40,12 +40,15 @@ namespace P6_NexaWorks.Data.Seed
             // -----------------------------
             // VERSIONS
             // -----------------------------
-            Version V(string num, Product p, DateTime d) => new Version
+            Version V(string num, Product p, DateTime d)
             {
-                Number = num,
-                Product = p,
-                DateRelease = d
-            };
+                return new Version
+                {
+                    Number = num,
+                    Product = p,
+                    DateRelease = d
+                };
+            }
 
             // Trader en Herbe
             var vTH_10 = V("1.0", pTrader, new(2024, 1, 1));
@@ -76,9 +79,17 @@ namespace P6_NexaWorks.Data.Seed
             await db.SaveChangesAsync();
 
             // -----------------------------
-            // 25 VersionOS EXPLICITES (un par ticket)
+            // 25 VersionOS (un par ticket)
             // -----------------------------
-            VersionOS VO(Version v, OS os) => new VersionOS { Version = v, OS = os };
+
+            VersionOS VO(Version v, OS os)
+            {
+                return new VersionOS
+                {
+                    Version = v,
+                    OS = os
+                };
+            }
 
             var vosList = new List<VersionOS>
             {
@@ -113,11 +124,11 @@ namespace P6_NexaWorks.Data.Seed
             await db.SaveChangesAsync();
 
             // -----------------------------
-            // ISSUES (25 exactes)
+            // ISSUES (25 tickets)
             // -----------------------------
-            Issue I(string desc, DateTime dc, string st, VersionOS v,
-                    DateTime? dr = null, string? res = null)
-                => new Issue
+            Issue I(string desc, DateTime dc, string st, VersionOS v, DateTime? dr = null, string? res = null)
+            {
+                return new Issue
                 {
                     Description = desc,
                     DateCreation = dc,
@@ -126,6 +137,7 @@ namespace P6_NexaWorks.Data.Seed
                     Resolution = res,
                     VersionOS = v
                 };
+            }
 
             var issues = new List<Issue>
             {
