@@ -19,32 +19,31 @@ ainsi que la résolution de chacun de ces problèmes.
 Le Modèle Conceptuel de Données est le suivant
 
 ```mermaid
-erDiagram
-
-    PRODUCT {
+classDiagram
+    class Product {
         int Id
         string Name
     }
 
-    VERSION {
+    class Version {
         int Id
         string Number
         datetime DateRelease
         int ProductId
     }
 
-    OS {
+    class OS {
         int Id
         string Name
     }
 
-    VERSION_OS {
+    class VersionOS {
         int Id
         int VersionId
         int OSId
     }
 
-    ISSUE {
+    class Issue {
         int Id
         string Description
         datetime DateCreation
@@ -54,9 +53,10 @@ erDiagram
         int VersionOSId
     }
 
-    PRODUCT -- VERSION : "has versions"
-    VERSION -- VERSION_OS : "supports"
-    OS -- VERSION_OS : "runs on"
-    VERSION_OS -- ISSUE : "has issues"
+    Product --> Version
+    Version --> VersionOS
+    OS --> VersionOS
+    VersionOS --> Issue
+
 ```
 
