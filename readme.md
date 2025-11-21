@@ -15,3 +15,48 @@ L'objectif de ce projet est de concevoir et de créer une base de données relat
 et de suivre tous les problèmes qui surviennent avec les produits au cours du cycle de vie de chaque version,
 
 ainsi que la résolution de chacun de ces problèmes.
+
+Le Modèle Conceptuel de Données est le suivant
+
+```mermaid
+erDiagram
+
+    PRODUCT {
+        int Id
+        string Name
+    }
+
+    VERSION {
+        int Id
+        string Number
+        datetime DateRelease
+        int ProductId
+    }
+
+    OS {
+        int Id
+        string Name
+    }
+
+    VERSIONOS {
+        int Id
+        int VersionId
+        int OSId
+    }
+
+    ISSUE {
+        int Id
+        string Description
+        datetime DateCreation
+        string Resolution
+        datetime DateResolution
+        string Statut
+        int VersionOSId
+    }
+
+    PRODUCT ||--|{ VERSION : "has versions"
+    VERSION ||--|{ VERSIONOS : "supports"
+    OS ||--|{ VERSIONOS : "runs on"
+    VERSIONOS ||--|{ ISSUE : "has issues"
+```
+
