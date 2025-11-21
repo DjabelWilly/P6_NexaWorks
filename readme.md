@@ -38,7 +38,7 @@ erDiagram
         string Name
     }
 
-    VERSIONOS {
+    VERSION_OS {
         int Id
         int VersionId
         int OSId
@@ -54,9 +54,9 @@ erDiagram
         int VersionOSId
     }
 
-    PRODUCT ||--|{ VERSION : "has versions"
-    VERSION ||--|{ VERSIONOS : "supports"
-    OS ||--|{ VERSIONOS : "runs on"
-    VERSIONOS ||--|{ ISSUE : "has issues"
+    PRODUCT -- VERSION : "has versions"
+    VERSION -- VERSION_OS : "supports"
+    OS -- VERSION_OS : "runs on"
+    VERSION_OS -- ISSUE : "has issues"
 ```
 
