@@ -18,7 +18,6 @@ ainsi que la résolution de chacun de ces problèmes.
 
 Le Modèle Conceptuel de Données est le suivant
 
-```mermaid
 classDiagram
     class Product {
         int Id
@@ -27,7 +26,7 @@ classDiagram
     class Version {
         int Id
         string Number
-        datetime DateRelease
+        date DateRelease
         int ProductId
     }
     class OS {
@@ -42,16 +41,16 @@ classDiagram
     class Issue {
         int Id
         string Description
-        datetime DateCreation
+        date DateCreation
         string Resolution
-        datetime DateResolution
+        date DateResolution
         string Statut
         int VersionOSId
     }
+
     Product --> Version
     Version --> VersionOS
     OS --> VersionOS
     VersionOS --> Issue
 
-```
 
