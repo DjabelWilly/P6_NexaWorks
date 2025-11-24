@@ -24,25 +24,21 @@ classDiagram
         int Id
         string Name
     }
-
     class Version {
         int Id
         string Number
         datetime DateRelease
         int ProductId
     }
-
     class OS {
         int Id
         string Name
     }
-
     class VersionOS {
         int Id
         int VersionId
         int OSId
     }
-
     class Issue {
         int Id
         string Description
@@ -52,7 +48,6 @@ classDiagram
         string Statut
         int VersionOSId
     }
-
     Product --> Version
     Version --> VersionOS
     OS --> VersionOS
