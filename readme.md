@@ -20,38 +20,43 @@ Le Modèle Conceptuel de Données est le suivant
 
 ```mermaid
 classDiagram
+
     class Product {
         int Id
         string Name
     }
+
     class Version {
         int Id
         string Number
-        date DateRelease
-        int ProductId
+        DateTme DateRelease
+        int ProductId  _FK_
     }
+
     class OS {
         int Id
         string Name
     }
+
     class VersionOS {
         int Id
-        int VersionId
-        int OSId
+        int VersionId _FK_
+        int OSId _FK_
     }
+
     class Issue {
         int Id
         string Description
-        date DateCreation
+        DateTme DateCreation
         string Resolution
-        date DateResolution
+        DateTme DateResolution
         string Statut
-        int VersionOSId
+        int VersionOSId _FK_
     }
 
-    Product --> Version
-    Version --> VersionOS
-    OS --> VersionOS
-    VersionOS --> Issue
+    Product "1" --> "N" Version
+    Version "1" --> "N" VersionOS
+    OS "1" --> "N" VersionOS
+    VersionOS "1" --> "N" Issue
 ```
 
